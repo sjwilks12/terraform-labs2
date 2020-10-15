@@ -37,3 +37,7 @@ resource "azurerm_app_service" "citadel" {
     app_service_plan_id = element(azurerm_app_service_plan.free.*.id,count.index)
 }
 
+output "webapp_ids" {
+  description = "ids of the webapps"
+  value       = azurerm_app_service.citadel.*.id
+}
